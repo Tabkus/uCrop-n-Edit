@@ -300,6 +300,7 @@ public class UCrop {
         public static final String EXTRA_ASPECT_RATIO_OPTIONS = EXTRA_PREFIX + ".AspectRatioOptions";
 
         public static final String EXTRA_UCROP_ROOT_VIEW_BACKGROUND_COLOR = EXTRA_PREFIX + ".UcropRootViewBackgroundColor";
+        public static final String ODOMAPOST = "ODOMAPOST";
 
         public static final String EXTRA_BRIGHTNESS = EXTRA_PREFIX + ".Brightness";
         public static final String EXTRA_CONTRAST = EXTRA_PREFIX + ".Contrast";
@@ -307,6 +308,8 @@ public class UCrop {
         public static final String EXTRA_SHARPNESS = EXTRA_PREFIX + ".Sharpness";
 
         private final Bundle mOptionBundle;
+        
+        private boolean odomaPost;
 
         public Options() {
             mOptionBundle = new Bundle();
@@ -315,6 +318,15 @@ public class UCrop {
         @NonNull
         public Bundle getOptionBundle() {
             return mOptionBundle;
+        }
+        
+        public void setOdomaPost(boolean b) {
+            this.odomaPost = b;
+            mCropOptionsBundle.putBoolean(ODOMAPOST, b);
+        }
+        
+        public boolean getOdomaPost() {
+            return odomaPost;
         }
 
         /**
