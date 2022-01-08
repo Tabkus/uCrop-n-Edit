@@ -498,10 +498,21 @@ public class UCropActivity extends AppCompatActivity {
 
     private void setupAspectRatioWidget(@NonNull Intent intent) {
 
+        boolean odomaPost = intent.getBooleanExtra(UCrop.Options.ODOMAPOST, false);
         int aspectRationSelectedByDefault = intent.getIntExtra(UCrop.Options.EXTRA_ASPECT_RATIO_SELECTED_BY_DEFAULT, 0);
         ArrayList<AspectRatio> aspectRatioList = intent.getParcelableArrayListExtra(UCrop.Options.EXTRA_ASPECT_RATIO_OPTIONS);
 
-        if (aspectRatioList == null || aspectRatioList.isEmpty()) {
+        if (odomaPost) {
+            aspectRationSelectedByDefault = 0;
+
+            aspectRatioList = new ArrayList<>();
+            aspectRatioList.add(new AspectRatio(null, 1, 1));
+            aspectRatioList.add(new AspectRatio(null, 6, 5));
+            aspectRatioList.add(new AspectRatio(null, 4, 3));
+            aspectRatioList.add(new AspectRatio(null, 3, 2));
+            aspectRatioList.add(new AspectRatio(null, 16, 9));
+            
+        } else if (aspectRatioList == null || aspectRatioList.isEmpty()) {
             aspectRationSelectedByDefault = 2;
 
             aspectRatioList = new ArrayList<>();
