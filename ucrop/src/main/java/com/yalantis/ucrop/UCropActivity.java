@@ -509,7 +509,7 @@ public class UCropActivity extends AppCompatActivity {
 
             aspectRatioList = new ArrayList<>();
             aspectRatioList.add(new AspectRatio(null, 1, 1));
-            aspectRatioList.add(new AspectRatio(null, 3, 4));
+            aspectRatioList.add(new AspectRatio(null, 6, 5));
             aspectRatioList.add(new AspectRatio(null, 4, 3));
             aspectRatioList.add(new AspectRatio(null, 3, 2));
             aspectRatioList.add(new AspectRatio(null, 16, 9));
