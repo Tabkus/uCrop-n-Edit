@@ -87,7 +87,7 @@ public class UCrop {
         return this;
     }
     
-    public UCrop void setOdomaPost(boolean b) {
+    public UCrop setOdomaPost(boolean b) {
         mCropOptionsBundle.putBoolean(ODOMAPOSTKEY, b);
         return this;
     }
