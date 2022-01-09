@@ -509,7 +509,7 @@ public class UCropActivity extends AppCompatActivity {
 
             aspectRatioList = new ArrayList<>();
             aspectRatioList.add(new AspectRatio(null, 1, 1));
-            aspectRatioList.add(new AspectRatio(null, 6, 5));
+            aspectRatioList.add(new AspectRatio(null, 3, 4));
             aspectRatioList.add(new AspectRatio(null, 4, 3));
             aspectRatioList.add(new AspectRatio(null, 3, 2));
             aspectRatioList.add(new AspectRatio(null, 16, 9));
@@ -545,6 +545,26 @@ public class UCropActivity extends AppCompatActivity {
 
         mCropAspectRatioViews.get(aspectRationSelectedByDefault).setSelected(true);
 
+        // init fuer odoma crop ggf
+        if (isOdomaPostCrop) {
+            // schlechter stil! Er soll einfach das erste auswaehlen (also 1:1 crop) als init
+            int countTemppp = 0;
+            for (ViewGroup cropAspectRatioView : mCropAspectRatioViews) {
+                if (countTemppp >= 1) { break; }
+                
+                mGestureCropImageView.setTargetAspectRatio(
+                        ((AspectRatioTextView) ((ViewGroup) cropAspectRatioView).getChildAt(0)).getAspectRatio(cropAspectRatioView.isSelected()));
+                mGestureCropImageView.setImageToWrapCropBounds();
+                if (!cropAspectRatioView.isSelected()) {
+                    for (ViewGroup cropAspectRatioView : mCropAspectRatioViews) {
+                        cropAspectRatioView.setSelected(cropAspectRatioView == cropAspectRatioView);
+                    }
+                }
+                
+                countTemppp++;
+            }
+        }
+        
         for (ViewGroup cropAspectRatioView : mCropAspectRatioViews) {
             cropAspectRatioView.setOnClickListener(new View.OnClickListener() {
                 @Override
