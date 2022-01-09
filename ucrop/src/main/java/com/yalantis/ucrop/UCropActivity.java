@@ -504,7 +504,8 @@ public class UCropActivity extends AppCompatActivity {
         int aspectRationSelectedByDefault = intent.getIntExtra(UCrop.Options.EXTRA_ASPECT_RATIO_SELECTED_BY_DEFAULT, 0);
         ArrayList<AspectRatio> aspectRatioList = intent.getParcelableArrayListExtra(UCrop.Options.EXTRA_ASPECT_RATIO_OPTIONS);
 
-        if (isOdomaPostCrop) {
+        //if (isOdomaPostCrop) {
+            
             aspectRationSelectedByDefault = 0;
 
             aspectRatioList = new ArrayList<>();
@@ -513,7 +514,7 @@ public class UCropActivity extends AppCompatActivity {
             aspectRatioList.add(new AspectRatio(null, 4, 3));
             aspectRatioList.add(new AspectRatio(null, 3, 2));
             aspectRatioList.add(new AspectRatio(null, 16, 9));
-            
+          /*  
         } else if (aspectRatioList == null || aspectRatioList.isEmpty()) {
             aspectRationSelectedByDefault = 2;
 
@@ -524,7 +525,7 @@ public class UCropActivity extends AppCompatActivity {
                     CropImageView.SOURCE_IMAGE_ASPECT_RATIO, CropImageView.SOURCE_IMAGE_ASPECT_RATIO));
             aspectRatioList.add(new AspectRatio(null, 3, 2));
             aspectRatioList.add(new AspectRatio(null, 16, 9));
-        }
+        }*/
 
         LinearLayout wrapperAspectRatioList = findViewById(R.id.layout_aspect_ratio);
 
