@@ -322,7 +322,7 @@ public class UCrop {
         
         public void setOdomaPost(boolean b) {
             this.odomaPost = b;
-            mCropOptionsBundle.putBoolean(ODOMAPOST, b);
+            mOptionBundle.putBoolean(ODOMAPOST, b);
         }
         
         public boolean getOdomaPost() {
