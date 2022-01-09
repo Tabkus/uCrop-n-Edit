@@ -562,6 +562,7 @@ public class UCropActivity extends AppCompatActivity {
         }
         
         // init fuer odoma crop ggf
+        final int aspectRationSelectedByDefaultFinal = aspectRationSelectedByDefault;
         if (isOdomaPostCrop) {
             // da nicht funkt, vermutlich da es in onCreate ist und das layout etc noch nicht fertig sind, per delay
             new android.os.Handler().postDelayed(new Runnable() {
@@ -569,7 +570,7 @@ public class UCropActivity extends AppCompatActivity {
                     public void run() {
                         try {
                             // schlechter stil! Er soll einfach das ausgewaehlte (also 1:1 crop) anwenden
-                            ViewGroup mvvGroup = mCropAspectRatioViews.get(aspectRationSelectedByDefault);
+                            ViewGroup mvvGroup = mCropAspectRatioViews.get(aspectRationSelectedByDefaultFinal);
 
                             mGestureCropImageView.setTargetAspectRatio(((AspectRatioTextView) ((ViewGroup) mvvGroup).getChildAt(0)).getAspectRatio(false));
                             mGestureCropImageView.setImageToWrapCropBounds();
