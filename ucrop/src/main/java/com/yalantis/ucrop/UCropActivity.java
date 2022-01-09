@@ -550,8 +550,9 @@ public class UCropActivity extends AppCompatActivity {
             // schlechter stil! Er soll einfach das ausgewaehlte (also 1:1 crop) anwenden
             ViewGroup mvvGroup = mCropAspectRatioViews.get(aspectRationSelectedByDefault);
 
-            mGestureCropImageView.setTargetAspectRatio(((AspectRatioTextView) ((ViewGroup) mvvGroup).getChildAt(0)).getAspectRatio(v.isSelected()));
+            mGestureCropImageView.setTargetAspectRatio(((AspectRatioTextView) ((ViewGroup) mvvGroup).getChildAt(0)).getAspectRatio(mvvGroup.isSelected()));
             mGestureCropImageView.setImageToWrapCropBounds();
+            
             if (!mvvGroup.isSelected()) {
                 for (ViewGroup group2 : mCropAspectRatioViews) {
                     group2.setSelected(group2 == mvvGroup);
