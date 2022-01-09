@@ -56,6 +56,9 @@ public class UCrop {
 
     private Intent mCropIntent;
     private Bundle mCropOptionsBundle;
+    
+    private boolean isOdomaPostCrop;
+    private boolean odomaCrop_AlreadyInit;
 
     /**
      * This method creates new Intent builder and sets both source and destination image URIs.
@@ -88,7 +91,9 @@ public class UCrop {
     }
     
     public UCrop setOdomaPost(boolean b) {
-        mCropOptionsBundle.putBoolean(ODOMAPOSTKEY, b);
+        //mCropOptionsBundle.putBoolean(ODOMAPOSTKEY, b);
+        isOdomaPostCrop = b;
+        odomaCrop_AlreadyInit = true;
         return this;
     }
 
@@ -133,6 +138,11 @@ public class UCrop {
      * @param activity Activity to receive result
      */
     public void start(@NonNull Activity activity) {
+        if (!odomaCrop_AlreadyInit) {
+           isOdomaPostCrop = false; // default    
+        }
+        UCropActivity.isOdomaPostCrop = isOdomaPostCrop;
+        
         start(activity, REQUEST_CROP);
     }
 
@@ -143,6 +153,11 @@ public class UCrop {
      * @param requestCode requestCode for result
      */
     public void start(@NonNull Activity activity, int requestCode) {
+        if (!odomaCrop_AlreadyInit) {
+           isOdomaPostCrop = false; // default    
+        }
+        UCropActivity.isOdomaPostCrop = isOdomaPostCrop;
+        
         activity.startActivityForResult(getIntent(activity), requestCode);
     }
 
@@ -152,6 +167,11 @@ public class UCrop {
      * @param fragment Fragment to receive result
      */
     public void start(@NonNull Context context, @NonNull Fragment fragment) {
+        if (!odomaCrop_AlreadyInit) {
+           isOdomaPostCrop = false; // default    
+        }
+        UCropActivity.isOdomaPostCrop = isOdomaPostCrop;
+        
         start(context, fragment, REQUEST_CROP);
     }
 
@@ -161,6 +181,11 @@ public class UCrop {
      * @param fragment Fragment to receive result
      */
     public void start(@NonNull Context context, @NonNull androidx.fragment.app.Fragment fragment) {
+        if (!odomaCrop_AlreadyInit) {
+           isOdomaPostCrop = false; // default    
+        }
+        UCropActivity.isOdomaPostCrop = isOdomaPostCrop;
+        
         start(context, fragment, REQUEST_CROP);
     }
 
@@ -172,6 +197,11 @@ public class UCrop {
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void start(@NonNull Context context, @NonNull Fragment fragment, int requestCode) {
+        if (!odomaCrop_AlreadyInit) {
+           isOdomaPostCrop = false; // default    
+        }
+        UCropActivity.isOdomaPostCrop = isOdomaPostCrop;
+        
         fragment.startActivityForResult(getIntent(context), requestCode);
     }
 
@@ -182,6 +212,11 @@ public class UCrop {
      * @param requestCode requestCode for result
      */
     public void start(@NonNull Context context, @NonNull androidx.fragment.app.Fragment fragment, int requestCode) {
+        if (!odomaCrop_AlreadyInit) {
+           isOdomaPostCrop = false; // default    
+        }
+        UCropActivity.isOdomaPostCrop = isOdomaPostCrop;
+        
         fragment.startActivityForResult(getIntent(context), requestCode);
     }
 
