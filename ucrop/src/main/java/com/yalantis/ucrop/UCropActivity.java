@@ -270,7 +270,7 @@ public class UCropActivity extends AppCompatActivity {
         // Aspect ratio options
         float aspectRatioX = intent.getFloatExtra(UCrop.EXTRA_ASPECT_RATIO_X, 0);
         float aspectRatioY = intent.getFloatExtra(UCrop.EXTRA_ASPECT_RATIO_Y, 0);
-        isOdomaPostCrop = intent.getBooleanExtra(UCrop.ODOMAPOSTKEY, 0);
+        isOdomaPostCrop = intent.getBooleanExtra(UCrop.ODOMAPOSTKEY, false);
 
         int aspectRationSelectedByDefault = intent.getIntExtra(UCrop.Options.EXTRA_ASPECT_RATIO_SELECTED_BY_DEFAULT, 0);
         ArrayList<AspectRatio> aspectRatioList = intent.getParcelableArrayListExtra(UCrop.Options.EXTRA_ASPECT_RATIO_OPTIONS);
