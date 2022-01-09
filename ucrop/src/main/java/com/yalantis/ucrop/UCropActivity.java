@@ -544,21 +544,6 @@ public class UCropActivity extends AppCompatActivity {
         }
 
         mCropAspectRatioViews.get(aspectRationSelectedByDefault).setSelected(true);
-
-        // init fuer odoma crop ggf
-        if (isOdomaPostCrop) {
-            // schlechter stil! Er soll einfach das ausgewaehlte (also 1:1 crop) anwenden
-            ViewGroup mvvGroup = mCropAspectRatioViews.get(aspectRationSelectedByDefault);
-
-            mGestureCropImageView.setTargetAspectRatio(((AspectRatioTextView) ((ViewGroup) mvvGroup).getChildAt(0)).getAspectRatio(mvvGroup.isSelected()));
-            mGestureCropImageView.setImageToWrapCropBounds();
-            
-            if (!mvvGroup.isSelected()) {
-                for (ViewGroup group2 : mCropAspectRatioViews) {
-                    group2.setSelected(group2 == mvvGroup);
-                }
-            }
-        }
         
         for (ViewGroup cropAspectRatioView : mCropAspectRatioViews) {
             cropAspectRatioView.setOnClickListener(new View.OnClickListener() {
@@ -574,6 +559,25 @@ public class UCropActivity extends AppCompatActivity {
                     }
                 }
             });
+        }
+        
+        // init fuer odoma crop ggf
+        if (isOdomaPostCrop) {
+            // da nicht funkt, vermutlich da es in onCreate ist und das layout etc noch nicht fertig sind, per delay
+            //new android.os.Handler().postDelayed(new Runnable() {
+              //      @Override
+                //    public void run() {
+                  //      try {
+                            // schlechter stil! Er soll einfach das ausgewaehlte (also 1:1 crop) anwenden
+                            ViewGroup mvvGroup = mCropAspectRatioViews.get(aspectRationSelectedByDefault);
+
+                            mGestureCropImageView.setTargetAspectRatio(((AspectRatioTextView) ((ViewGroup) mvvGroup).getChildAt(0)).getAspectRatio(false));
+                            mGestureCropImageView.setImageToWrapCropBounds();
+                    //    } catch (Exception e) {
+                      //      e.printStackTrace();
+                        //}
+                    //}
+                //}, 400);
         }
     }
 
@@ -883,6 +887,9 @@ public class UCropActivity extends AppCompatActivity {
     }
 
     protected void cropAndSaveImage() {
+        // muss sein, nochmal sicherstellen
+        mGestureCropImageView.setImageToWrapCropBounds();
+        
         mBlockingView.setClickable(true);
         mShowLoader = true;
         supportInvalidateOptionsMenu();
