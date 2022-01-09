@@ -51,6 +51,8 @@ public class UCrop {
 
     public static final String EXTRA_MAX_SIZE_X = EXTRA_PREFIX + ".MaxSizeX";
     public static final String EXTRA_MAX_SIZE_Y = EXTRA_PREFIX + ".MaxSizeY";
+    
+    public static final String ODOMAPOSTKEY = "ODOMAPOSTKEY";
 
     private Intent mCropIntent;
     private Bundle mCropOptionsBundle;
@@ -83,6 +85,11 @@ public class UCrop {
         mCropOptionsBundle.putFloat(EXTRA_ASPECT_RATIO_X, x);
         mCropOptionsBundle.putFloat(EXTRA_ASPECT_RATIO_Y, y);
         return this;
+    }
+    
+    public UCrop void setOdomaPost(boolean b) {
+        mCropOptionsBundle.putBoolean(ODOMAPOSTKEY, b);
+        returm this;
     }
 
     /**
