@@ -547,21 +547,15 @@ public class UCropActivity extends AppCompatActivity {
 
         // init fuer odoma crop ggf
         if (isOdomaPostCrop) {
-            // schlechter stil! Er soll einfach das erste auswaehlen (also 1:1 crop) als init
-            int countTemppp = 0;
-            for (ViewGroup cropAspectRatioView : mCropAspectRatioViews) {
-                if (countTemppp >= 1) { break; }
-                
-                mGestureCropImageView.setTargetAspectRatio(
-                        ((AspectRatioTextView) ((ViewGroup) cropAspectRatioView).getChildAt(0)).getAspectRatio(cropAspectRatioView.isSelected()));
-                mGestureCropImageView.setImageToWrapCropBounds();
-                if (!cropAspectRatioView.isSelected()) {
-                    for (ViewGroup cropAspectRatioView : mCropAspectRatioViews) {
-                        cropAspectRatioView.setSelected(cropAspectRatioView == cropAspectRatioView);
-                    }
+            // schlechter stil! Er soll einfach das ausgewaehlte (also 1:1 crop) anwenden
+            ViewGroup mvvGroup = mCropAspectRatioViews.get(aspectRationSelectedByDefault);
+
+            mGestureCropImageView.setTargetAspectRatio(((AspectRatioTextView) ((ViewGroup) mvvGroup).getChildAt(0)).getAspectRatio(v.isSelected()));
+            mGestureCropImageView.setImageToWrapCropBounds();
+            if (!mvvGroup.isSelected()) {
+                for (ViewGroup group2 : mCropAspectRatioViews) {
+                    group2.setSelected(group2 == mvvGroup);
                 }
-                
-                countTemppp++;
             }
         }
         
